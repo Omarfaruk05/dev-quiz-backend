@@ -9,6 +9,6 @@ const createUser = async (data: User): Promise<User> => {
   return result;
 };
 
-export const UserService = {
+export const AuthService = {
   createUser,
 };

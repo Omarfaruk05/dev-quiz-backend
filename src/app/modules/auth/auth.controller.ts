@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import catchAsync from "../../../shared/catchAsync";
-import { UserService } from "./auth.service";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
+import { AuthService } from "./auth.service";
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.createUser(req.body);
+  const result = await AuthService.createUser(req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
