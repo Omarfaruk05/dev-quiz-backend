@@ -31,6 +31,36 @@ const createOrder = async (user: any, payload: any): Promise<Order> => {
   return result;
 };
 
+const getAllOrders = async (user: any): Promise<Order[] | undefined> => {
+  const { id, role } = user;
+
+  const isExist = await prisma.user.findFirst({
+    where: {
+      id,
+    },
+  });
+
+  if (!isExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User does not found.");
+  }
+
+  if (role === "admin") {
+    const result = await prisma.order.findMany({});
+
+    return result;
+  }
+  if (role === "customer") {
+    const result = await prisma.order.findMany({
+      where: {
+        userId: id,
+      },
+    });
+
+    return result;
+  }
+};
+
 export const OrderService = {
   createOrder,
+  getAllOrders,
 };
