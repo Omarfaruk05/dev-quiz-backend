@@ -12,6 +12,12 @@ const createBook = async (data: Book): Promise<Book> => {
   return result;
 };
 
+const getAllBooks = async (): Promise<Book[]> => {
+  const result = await prisma.book.findMany({});
+
+  return result;
+};
+
 const getBooksByCategoryId = async (categoryId: string): Promise<Book[]> => {
   const result = await prisma.book.findMany({
     where: {
@@ -61,6 +67,7 @@ const deleteSingleBook = async (id: string): Promise<Book | null> => {
 
 export const BookService = {
   createBook,
+  getAllBooks,
   getBooksByCategoryId,
   getSingleBook,
   updateSingleBook,
