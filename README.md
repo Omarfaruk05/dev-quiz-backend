@@ -1,4 +1,4 @@
-This is a book catalog backend site. I works as a book store. You can create, update, delete user. You can create order if you are a customer. If you are a admin you can create category, create book. Only admins can update and delete operations.
+## This is a book catalog backend site. It works as a online book store. You can create user. If you are a admin you can create category, create book. Only admins can update and delete operations. You can create order if you are a customer. A customers and admins can see all books. A customer can see his/her orders, on the other hand admins can see all orders. Lastly every user can see his/her profile info.
 
 # live link: [https://book-catalog-chi.vercel.app]
 
@@ -10,21 +10,21 @@ This is a book catalog backend site. I works as a book store. You can create, up
 
 ### For Admin:
 
-{authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQxMzc0YTM2LTRmMzAtNGFiNi04ZWNlLTFiZDc3YTYzOTM1NCIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY5Mzc1MzU2NSwiZXhwIjoxNzI1Mjg5NTY1fQ.6ubBeOjBLA_yCMDlwmcqzNlNsklYU5X_ibdqwPKvzeY }
+{authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjkwOWRmNzQyLWVhYjctNGU2My04YTkyLTQ5M2FkNzM3ZDIzMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5Mzc1Mzc0NSwiZXhwIjoxNzI1Mjg5NzQ1fQ.ZaotZlrW9aFQdgN6gHwqVtPbMqXDqkAFKT0mUZNgpJM }
 
 ## USER
 
 - Route: [https://book-catalog-chi.vercel.app/api/v1/auth/singup] (POST) Create users
-- Route: [https://book-catalog-chi.vercel.app/api/v1/users] (GET) All users
-- Route: [https://book-catalog-chi.vercel.app/api/v1/users/909df742-eab7-4e63-8a92-493ad737d232] (Single GET) Single user
-- Route: [https://book-catalog-chi.vercel.app/api/v1/users/c7582bd4-7f55-4f5c-a4d2-7422c5205a17] (PATCH)
+- Route: [https://book-catalog-chi.vercel.app/api/v1/users] (GET) Only Admins can get all users
+- Route: [https://book-catalog-chi.vercel.app/api/v1/users/909df742-eab7-4e63-8a92-493ad737d232] (Single GET) Only Admins can get single user
+- Route: [https://book-catalog-chi.vercel.app/api/v1/users/c7582bd4-7f55-4f5c-a4d2-7422c5205a17] (PATCH)Only Admins can get update single user
 - Route: [https://book-catalog-chi.vercel.app/api/v1/users/c7582bd4-7f55-4f5c-a4d2-7422c5205a17] (DELETE)
-- Route: [https://book-catalog-chi.vercel.app/api/v1/profile] (GET)
+- Route: [https://book-catalog-chi.vercel.app/api/v1/profile] (GET) Only Admins can delete a user
 
 ## CATEGORY
 
-- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/create-category] (POST)
-- Route: [https://book-catalog-chi.vercel.app/api/v1/categories] (GET) All categories
+- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/create-category] (POST) Only Admin can create category
+- Route: [https://book-catalog-chi.vercel.app/api/v1/categories] (GET) Everyone can see all categories
 - Route: [https://book-catalog-chi.vercel.app/api/v1/categories/eaa2b9ba-2a0c-4080-afda-541a26dbadac] (Single GET) Single category
 - Route: [https://book-catalog-chi.vercel.app/api/v1/categories/4d854790-617f-41a7-9790-109bf4d23cb4] (PATCH) Update single category
 - Route: [https://book-catalog-chi.vercel.app/api/v1/categories/4d854790-617f-41a7-9790-109bf4d23cb4] (DELETE) Delete single Category

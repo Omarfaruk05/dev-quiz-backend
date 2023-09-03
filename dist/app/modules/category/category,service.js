@@ -21,13 +21,20 @@ const createCategory = (data) => __awaiter(void 0, void 0, void 0, function* () 
     return result;
 });
 const getCategories = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.category.findMany({});
+    const result = yield prisma_1.default.category.findMany({
+        include: {
+            books: true,
+        },
+    });
     return result;
 });
 const getSingleCategory = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.category.findUnique({
         where: {
             id,
+        },
+        include: {
+            books: true,
         },
     });
     return result;
