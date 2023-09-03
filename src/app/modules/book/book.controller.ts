@@ -3,6 +3,9 @@ import catchAsync from "../../../shared/catchAsync";
 import { BookService } from "./book.service";
 import sendResponse from "../../../shared/sendResponse";
 import httpStatus from "http-status";
+import pick from "../../../shared/pic";
+import { BookFilterableFields } from "../profile/book.constant";
+import { paginationFields } from "../../constants/paginationConstants";
 
 const createBook = catchAsync(async (req: Request, res: Response) => {
   const result = await BookService.createBook(req.body);
@@ -16,7 +19,9 @@ const createBook = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAllBooks = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookService.getAllBooks();
+  const filters = pick(req.query, BookFilterableFields);
+  const options = pick(req.query, paginationFields);
+  const result = await BookService.getAllBooks(filters, options);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -28,7 +33,8 @@ const getAllBooks = catchAsync(async (req: Request, res: Response) => {
 
 const getBooksByCategoryId = catchAsync(async (req: Request, res: Response) => {
   const { categoryId } = req.params;
-  const result = await BookService.getBooksByCategoryId(categoryId);
+  const options = pick(req.query, paginationFields);
+  const result = await BookService.getBooksByCategoryId(categoryId, options);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
