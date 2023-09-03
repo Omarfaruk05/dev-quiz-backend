@@ -32,6 +32,9 @@ model Category {
   title String @unique
   books Book[]
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@map("categories")
 }
 
@@ -46,6 +49,9 @@ model Book {
   category         Category          @relation(fields: [categoryId], references: [id])
   reviewAndRatings ReviewAndRating[]
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@map("books")
 }
 
@@ -58,6 +64,9 @@ model ReviewAndRating {
   bookId String
   book   Book   @relation(fields: [bookId], references: [id])
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@map("review_and_ratings")
 }
 
@@ -68,6 +77,7 @@ model Order {
   orderedBooks Json
   status       Status   @default(pending)
   createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@map("orders")
 }
