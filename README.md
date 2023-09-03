@@ -25,15 +25,15 @@
 
 - Route: [https://book-catalog-chi.vercel.app/api/v1/categories/create-category] (POST) Only Admin can create category
 - Route: [https://book-catalog-chi.vercel.app/api/v1/categories] (GET) Everyone can see all categories
-- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/eaa2b9ba-2a0c-4080-afda-541a26dbadac] (Single GET) Single category
-- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/4d854790-617f-41a7-9790-109bf4d23cb4] (PATCH) Update single category
-- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/4d854790-617f-41a7-9790-109bf4d23cb4] (DELETE) Delete single Category
+- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/eaa2b9ba-2a0c-4080-afda-541a26dbadac] (Single GET)Everyone can see a Single category
+- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/4d854790-617f-41a7-9790-109bf4d23cb4] (PATCH) Only Admins can update single category
+- Route: [https://book-catalog-chi.vercel.app/api/v1/categories/4d854790-617f-41a7-9790-109bf4d23cb4] (DELETE) Only Admins can delete single Category
 
 ## BOOKS
 
 - Route: [https://book-catalog-chi.vercel.app/api/v1/books/create-book] (POST)Admin can create a book
-- Route: [https://book-catalog-chi.vercel.app/api/v1/books?size=2&page=&sortBy=price&sortOrder=desc&minPrice=200&maxPrice=1000&category=eaa2b9ba-2a0c-4080-afda-541a26dbadac&search=programming] (GET) All users can get all books
-- Route: [https://book-catalog-chi.vercel.app/api/v1/books/22a45a07-9065-445a-85cd-a3e6882acab8] (Single GET)All users can get a book details
+- Route: [https://book-catalog-chi.vercel.app/api/v1/books?size=2&page=&sortBy=price&sortOrder=desc&minPrice=200&maxPrice=1000&category=eaa2b9ba-2a0c-4080-afda-541a26dbadac&search=programming] (GET) Everyone can see all books
+- Route: [https://book-catalog-chi.vercel.app/api/v1/books/22a45a07-9065-445a-85cd-a3e6882acab8] (Single GET)Everyone can see a book details
 
 - Route: [https://book-catalog-chi.vercel.app/api/v1/books/eaa2b9ba-2a0c-4080-afda-541a26dbadac/category] (GET)All users can get books useing category
 - Route: [https://book-catalog-chi.vercel.app/api/v1/books/22a45a07-9065-445a-85cd-a3e6882acab8] (PATCH)Admin can update single book
