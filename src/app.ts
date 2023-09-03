@@ -17,6 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1", routes);
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to BOOK CATALOG. All routes are working.");
+});
+
 //global error handler
 app.use(globalErrorHandler);
 
