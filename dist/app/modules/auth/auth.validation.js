@@ -13,9 +13,7 @@ const createUserZodSchema = zod_1.z.object({
         }),
         contactNo: zod_1.z.string({ required_error: "Contact number is required." }),
         address: zod_1.z.string({ required_error: "Address is required." }),
-        profileImg: zod_1.z
-            .string({ required_error: "Profile image link is required." })
-            .url(),
+        profileImg: zod_1.z.string({ required_error: "Profile image link is required." }),
     }),
 });
 const loginUserZodSchema = zod_1.z.object({
