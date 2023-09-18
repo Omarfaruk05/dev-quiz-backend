@@ -11,9 +11,7 @@ const createUserZodSchema = z.object({
     }),
     contactNo: z.string({ required_error: "Contact number is required." }),
     address: z.string({ required_error: "Address is required." }),
-    profileImg: z
-      .string({ required_error: "Profile image link is required." })
-      .url(),
+    profileImg: z.string({ required_error: "Profile image link is required." }),
   }),
 });
 
