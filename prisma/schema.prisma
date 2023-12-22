@@ -7,88 +7,25 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("PRODUCTION_DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id               String            @id @default(uuid())
-  name             String
-  email            String            @unique
-  password         String
-  role             Role
-  contactNo        String
-  address          String
-  profileImg       String
-  createdAt        DateTime          @default(now())
-  updatedAt        DateTime          @updatedAt
-  reviewAndRatings ReviewAndRating[]
-  orders           Order[]
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  password   String
+  role       Role
+  contactNo  String?
+  address    String?
+  profileImg String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@map("users")
 }
 
-model Category {
-  id    String @id @default(uuid())
-  title String @unique
-  books Book[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("categories")
-}
-
-model Book {
-  id               String            @id @default(uuid())
-  title            String
-  author           String
-  price            Float
-  genre            String
-  publicationDate  String
-  categoryId       String
-  category         Category          @relation(fields: [categoryId], references: [id])
-  reviewAndRatings ReviewAndRating[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("books")
-}
-
-model ReviewAndRating {
-  id     String @id @default(uuid())
-  review String
-  rating Int
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
-  bookId String
-  book   Book   @relation(fields: [bookId], references: [id])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("review_and_ratings")
-}
-
-model Order {
-  id           String   @id @default(uuid())
-  userId       String
-  user         User     @relation(fields: [userId], references: [id])
-  orderedBooks Json
-  status       Status   @default(pending)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  @@map("orders")
-}
-
 enum Role {
   admin
-  customer
-}
-
-enum Status {
-  pending
-  shipped
-  delivered
+  performer
 }
