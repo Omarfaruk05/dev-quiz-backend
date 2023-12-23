@@ -9,9 +9,9 @@ const createUserZodSchema = z.object({
     role: z.enum([...Object.values(Role)] as [string, ...string[]], {
       required_error: "Role must be admin or customer.",
     }),
-    contactNo: z.string({ required_error: "Contact number is required." }),
-    address: z.string({ required_error: "Address is required." }),
-    profileImg: z.string({ required_error: "Profile image link is required." }),
+    contactNo: z.string().optional(),
+    address: z.string().optional(),
+    profileImg: z.string().optional(),
   }),
 });
 

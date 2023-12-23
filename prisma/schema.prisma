@@ -35,6 +35,8 @@ model Quiz {
   name      String
   logo      String
   questions Question[]
+
+  @@map("quizs")
 }
 
 model Question {
@@ -44,4 +46,6 @@ model Question {
   options       String[]
   quiz          Quiz     @relation(fields: [quizId], references: [id])
   quizId        String
+
+  @@map("questions")
 }
