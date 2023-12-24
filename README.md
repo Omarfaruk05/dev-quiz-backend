@@ -40,3 +40,13 @@ password:123456
 - Route: [https://dev-quiz-backend.vercel.app/api/v1/scores/:id] (GET)get single score
 - Route: [https://dev-quiz-backend.vercel.app/api/v1/scores/:id] (PATCH)UPDATE single score
 - Route: [https://dev-quiz-backend.vercel.app/api/v1/scores/:id] (DELETE)Delete score
+
+## To run this project in your local PC Pleace follow this directions
+
+#### Steps
+
+1. git clone https://github.com/Omarfaruk05/dev-quiz-backend.git
+2. yarn / npm install
+3. In your terminal use 'npm run dev / yarn run dev' for run project
+4. In your terminal use 'npm run build / yarn run build' for build project
+5. In your terminal use 'npm run start / yarn run start' for start project
