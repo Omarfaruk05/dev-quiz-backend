@@ -21,9 +21,7 @@ const getSingleQuestion = async (id: string): Promise<Question | null> => {
   return result;
 };
 
-const createQuestion = async (
-  data: Prisma.QuestionCreateInput
-): Promise<Question> => {
+const createQuestion = async (data: Question): Promise<Question> => {
   const result = await prisma.question.create({
     data,
   });

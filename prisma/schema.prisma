@@ -11,16 +11,18 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
+  id         String  @id @default(uuid())
   name       String
-  email      String   @unique
+  email      String  @unique
   password   String
-  role       Role     @default(performer)
+  role       Role    @default(performer)
   contactNo  String?
   address    String?
   profileImg String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  Score      Score[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("users")
 }
@@ -35,6 +37,10 @@ model Quiz {
   name      String
   logo      String
   questions Question[]
+  Score     Score[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("quizs")
 }
@@ -47,5 +53,20 @@ model Question {
   quiz          Quiz     @relation(fields: [quizId], references: [id])
   quizId        String
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@map("questions")
+}
+
+model Score {
+  id     String @id @default(uuid())
+  score  Int
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id])
+  quizId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

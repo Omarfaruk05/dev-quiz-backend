@@ -22,6 +22,7 @@ const createUser = async (data: User): Promise<User> => {
   return result;
 };
 
+//login user service
 const loginUser = async (
   loginData: ILoginUser
 ): Promise<ILoginUserResponse> => {
@@ -41,31 +42,30 @@ const loginUser = async (
     password,
     isUserExist.password
   );
+
   if (isUserExist.password && !isPasswordMatched) {
     throw new ApiError(httpStatus.UNAUTHORIZED, "Password is incorrect.");
   }
 
-  const token = jwtHelpers.createToken(
-    {
-      id: isUserExist?.id,
-      role: isUserExist?.role,
-    },
+  // generating access token
+  const accessToken = jwtHelpers.createToken(
+    { id: isUserExist?.id, email: isUserExist?.email, role: isUserExist?.role },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
 
+  // generating refresh token
   const refreshToken = jwtHelpers.createToken(
-    { id: isUserExist?.id, role: isUserExist?.role },
+    { email: isUserExist?.email, role: isUserExist.role },
     config.jwt.refresh_secret as Secret,
     config.jwt.refresh_expires_in as string
   );
 
   return {
-    token,
+    accessToken,
     refreshToken,
   };
 };
-
 export const AuthService = {
   createUser,
   loginUser,
