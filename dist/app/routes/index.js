@@ -8,6 +8,7 @@ const auth_route_1 = require("../modules/auth/auth.route");
 const user_route_1 = require("../modules/user/user.route");
 const quiz_route_1 = require("../modules/quiz/quiz.route");
 const question_route_1 = require("../modules/question/question.route");
+const scor_route_1 = require("../modules/scor/scor.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -25,6 +26,10 @@ const moduleRoutes = [
     {
         path: "/questions",
         route: question_route_1.QuestionRoute,
+    },
+    {
+        path: "/scores",
+        route: scor_route_1.ScoreRoute,
     },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

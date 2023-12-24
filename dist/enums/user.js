@@ -4,5 +4,5 @@ exports.ENUM_ROLE = void 0;
 var ENUM_ROLE;
 (function (ENUM_ROLE) {
     ENUM_ROLE["ADMIN"] = "admin";
-    ENUM_ROLE["CUSTOMER"] = "performer";
+    ENUM_ROLE["PERFORMER"] = "performer";
 })(ENUM_ROLE || (exports.ENUM_ROLE = ENUM_ROLE = {}));

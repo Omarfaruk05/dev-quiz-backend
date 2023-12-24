@@ -12,42 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserService = void 0;
+exports.ScoreService = void 0;
 const prisma_1 = __importDefault(require("../../../shared/prisma"));
-const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.user.findMany({
-        include: {
-            scores: {
-                include: {
-                    user: true,
-                    quiz: true,
-                },
-            },
-        },
-    });
+const getScores = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.score.findMany({});
     return result;
 });
-const getSingleUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.user.findUnique({
+const getScoreById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.score.findUnique({
         where: {
             id,
         },
-        include: {
-            scores: {
-                include: {
-                    quiz: {
-                        include: {
-                            questions: true,
-                        },
-                    },
-                },
-            },
-        },
     });
     return result;
 });
-const updateSingleUser = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.user.update({
+const createScore = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.score.create({
+        data,
+    });
+    return result;
+});
+const updateScore = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.score.update({
         where: {
             id,
         },
@@ -55,17 +41,18 @@ const updateSingleUser = (id, payload) => __awaiter(void 0, void 0, void 0, func
     });
     return result;
 });
-const deleteSingleUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.user.delete({
+const deleteScore = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.score.delete({
         where: {
             id,
         },
     });
     return result;
 });
-exports.UserService = {
-    getUsers,
-    getSingleUser,
-    updateSingleUser,
-    deleteSingleUser,
+exports.ScoreService = {
+    getScores,
+    getScoreById,
+    createScore,
+    updateScore,
+    deleteScore,
 };

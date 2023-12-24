@@ -12,54 +12,63 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
+exports.ScoreController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
-const user_service_1 = require("./user.service");
-const getUsers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_service_1.UserService.getUsers();
+const scor_service_1 = require("./scor.service");
+const getScores = (0, catchAsync_1.default)((_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield scor_service_1.ScoreService.getScores();
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "Users retrieved successfully",
+        message: "Scores retrieved successfully",
         data: result,
     });
 }));
-const getSingleUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getScoreById = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const result = yield user_service_1.UserService.getSingleUser(id);
+    const result = yield scor_service_1.ScoreService.getScoreById(id);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "User getched successfully",
+        message: "Score fetched successfully",
         data: result,
     });
 }));
-const updateSingleUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const createScore = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield scor_service_1.ScoreService.createScore(req.body);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.CREATED,
+        success: true,
+        message: "Score created successfully",
+        data: result,
+    });
+}));
+const updateScore = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    console.log(req.body);
-    const result = yield user_service_1.UserService.updateSingleUser(id, req.body);
+    const result = yield scor_service_1.ScoreService.updateScore(id, req.body);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "User updated successfully",
+        message: "Score updated successfully",
         data: result,
     });
 }));
-const deleteSingleUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteScore = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const result = yield user_service_1.UserService.deleteSingleUser(id);
+    const result = yield scor_service_1.ScoreService.deleteScore(id);
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "User deleted successfully",
+        message: "Score deleted successfully",
         data: result,
     });
 }));
-exports.UserController = {
-    getUsers,
-    getSingleUser,
-    updateSingleUser,
-    deleteSingleUser,
+exports.ScoreController = {
+    getScores,
+    getScoreById,
+    createScore,
+    updateScore,
+    deleteScore,
 };
