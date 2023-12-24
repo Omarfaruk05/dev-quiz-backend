@@ -1,4 +1,4 @@
-## This is [Ded Quiz](https://dev-quiz-backend.vercel.app) backend site. Web applicatin developers can use this site for quiz test purpose.
+## This is [Dev Quiz](https://dev-quiz-backend.vercel.app) backend site. Web applicatin developers can use this site for quiz test purpose.
 
 # live link: [https://dev-quiz-backend.vercel.app]
 
