@@ -2,7 +2,16 @@ import { User } from "@prisma/client";
 import prisma from "../../../shared/prisma";
 
 const getUsers = async (): Promise<User[]> => {
-  const result = await prisma.user.findMany({});
+  const result = await prisma.user.findMany({
+    include: {
+      scores: {
+        include: {
+          user: true,
+          quiz: true,
+        },
+      },
+    },
+  });
 
   return result;
 };
@@ -11,6 +20,17 @@ const getSingleUser = async (id: string): Promise<User | null> => {
   const result = await prisma.user.findUnique({
     where: {
       id,
+    },
+    include: {
+      scores: {
+        include: {
+          quiz: {
+            include: {
+              questions: true,
+            },
+          },
+        },
+      },
     },
   });
 

@@ -3,6 +3,7 @@ import { AuthRoutes } from "../modules/auth/auth.route";
 import { UserRoutes } from "../modules/user/user.route";
 import { QuizRoute } from "../modules/quiz/quiz.route";
 import { QuestionRoute } from "../modules/question/question.route";
+import { ScoreRoute } from "../modules/scor/scor.route";
 const router = express.Router();
 
 const moduleRoutes = [
@@ -21,6 +22,10 @@ const moduleRoutes = [
   {
     path: "/questions",
     route: QuestionRoute,
+  },
+  {
+    path: "/scores",
+    route: ScoreRoute,
   },
 ];
 

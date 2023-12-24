@@ -19,7 +19,7 @@ model User {
   contactNo  String?
   address    String?
   profileImg String?
-  Score      Score[]
+  scores     Score[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -37,10 +37,7 @@ model Quiz {
   name      String
   logo      String
   questions Question[]
-  Score     Score[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  scores    Score[]
 
   @@map("quizs")
 }
@@ -53,15 +50,12 @@ model Question {
   quiz          Quiz     @relation(fields: [quizId], references: [id])
   quizId        String
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
   @@map("questions")
 }
 
 model Score {
   id     String @id @default(uuid())
-  score  Int
+  score  Float
   user   User   @relation(fields: [userId], references: [id])
   userId String
   quiz   Quiz   @relation(fields: [quizId], references: [id])
