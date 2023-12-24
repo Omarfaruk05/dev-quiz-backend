@@ -9,9 +9,13 @@
 email: mdomarfaruk@gmail.com
 password:123456
 
+## AUTH
+
+- Route: [https://dev-quiz-backend.vercel.app/api/v1/auth/signup] (POST) SingUp
+- Route: [https://dev-quiz-backend.vercel.app/api/v1/auth/signin] (POST) Singin
+
 ## USER
 
-- Route: [https://dev-quiz-backend.vercel.app/api/v1/users/] (POST) Create users
 - Route: [https://dev-quiz-backend.vercel.app/api/v1/users] (GET) get all users
 - Route: [https://dev-quiz-backend.vercel.app/api/v1/users/:id] (Single GET)
 - Route: [https://dev-quiz-backend.vercel.app/api/v1/:id] (PATCH) update single user
